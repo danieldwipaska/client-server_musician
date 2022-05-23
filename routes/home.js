@@ -70,10 +70,12 @@ router.get('/join', verify, async (req, res) => {
 router.get('/band/lists', verify, async (req, res) => {
   try {
     const bands = await Band.find();
+    const cats = await Category.find().sort({ name: 1 });
     res.render('bandList', {
       layout: 'layouts/main-layout',
       bands: bands,
       user: req.validUser,
+      cats: cats,
     });
   } catch (err) {
     res.status(500).json(err);
