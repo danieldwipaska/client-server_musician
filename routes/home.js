@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   });
 });
 
-//ENROLL A BAND
+//LIST A BAND
 router.get('/join', async (req, res) => {
   try {
     const category = await Category.find();
@@ -30,6 +30,20 @@ router.get('/band/lists', async (req, res) => {
     res.render('bandList', {
       layout: 'layouts/main-layout',
       bands: bands,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//BAND PROFILE
+router.get('/band/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const band = await Band.findById(id);
+    res.render('profile', {
+      layout: 'layouts/main-layout',
+      band: band,
     });
   } catch (err) {
     res.status(500).json(err);

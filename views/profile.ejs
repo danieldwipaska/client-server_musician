@@ -1,0 +1,52 @@
+<div class="container-sm my-5">
+  <div class="row">
+    <div class="col-sm-8 mx-auto">
+      <div class="card text-bg-dark mb-3">
+        <img src="" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%= band.name %></h5>
+          <p class="card-text"><%= band.desc %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Genre.</strong>
+            <p><%= band.categories %></p>
+          </li>
+          <li class="list-group-item">
+            <strong>Manager.</strong>
+            <p><%= band.managerName %></p>
+          </li>
+          <li class="list-group-item">
+            <strong>Personil.</strong>
+            <p><%= band.memberName %></p>
+          </li>
+          <li class="list-group-item">
+            <strong>Asal Band (Kota/Univ/Fakultas).</strong>
+            <p><%= band.city %></p>
+          </li>
+          <li class="list-group-item">
+            <strong>Kebutuhan Alat.</strong>
+            <p><%= band.tools %></p>
+          </li>
+          <li class="list-group-item">
+            <strong>Website.</strong>
+            <p><%= band.website %></p>
+          </li>
+          <li class="list-group-item">
+            <strong>Kontak.</strong>
+            <p><%= band.phone %></p>
+          </li>
+          <li class="list-group-item">
+            <strong>Tarif.</strong>
+            <p class="price-here"><%= band.price %></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const price = document.querySelector('.price-here');
+  const formatter = new Intl.NumberFormat(['ban', 'id']);
+  price.innerHTML = formatter.format(parseInt(price.innerHTML));
+</script>
