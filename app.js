@@ -4,6 +4,7 @@ const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 require('dotenv').config();
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 //IMPORT ROUTES
 const homeRoute = require('./routes/home');
@@ -11,12 +12,14 @@ const homeRoute = require('./routes/home');
 //IMPORT API ROUTES
 const bandRoute = require('./routes/apiBands');
 const categoryRoute = require('./routes/apiCategory');
+const authRoute = require('./routes/apiAuth');
 
 //MIDDLEWARES
 app.use(expressLayouts);
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(`${__dirname}/public`)); // make files able to access
 app.use('/public', express.static(path.join(__dirname, 'public')));
@@ -37,6 +40,7 @@ mongoose
 app.use('/', homeRoute);
 app.use('/api/bands', bandRoute);
 app.use('/api/categories', categoryRoute);
+app.use('/api/auth', authRoute);
 
 //LISTEN
 const port = process.env.PORT || 3000;
