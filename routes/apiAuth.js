@@ -35,7 +35,7 @@ router.post('/login', async (req, res) => {
     if (!validPass) return res.status(400).json('wrong username or password');
 
     // Create and assign a token
-    const token = jwt.sign({ name: validUser.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '2m' });
+    const token = jwt.sign({ name: validUser.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' });
     let options = {
       path: '/',
       sameSite: true,
@@ -47,6 +47,12 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+//LOGOUT
+router.get('/logout', (req, res) => {
+  res.cookie('x-access-token', '', { maxAge: 1 });
+  res.redirect('/');
 });
 
 module.exports = router;

@@ -7,6 +7,9 @@ module.exports = function (req, res, next) {
     return res.render('login', {
       layout: 'layouts/main-layout',
       title: 'Login',
+      user: {
+        name: 'Welcome',
+      },
     }); // if there is no token
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
@@ -14,6 +17,9 @@ module.exports = function (req, res, next) {
       return res.render('login', {
         layout: 'layouts/main-layout',
         title: 'Login',
+        user: {
+          name: 'Welcome',
+        },
       });
     req.validUser = user;
     next();

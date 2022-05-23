@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <div class="col-6 mx-auto">
+  <div class="col-sm-8 mx-auto">
     <% bands.forEach( (band) => { %>
     <div class="card text-center text-bg-dark mb-3">
       <div class="card-header">Band</div>
@@ -7,12 +7,15 @@
         <h5 class="card-title"><%= band.name %></h5>
         <p class="card-text text-muted"><%= band.categories %></p>
         <p class="card-text"><%= band.city %></p>
-        <a href="<%= band._id %>" class="btn btn-primary mb-2">Lihat Profil</a>
+        <a href="<%= band._id %>" class="btn btn-primary">Lihat Profil</a>
         <a href="#" class="btn btn-danger">Pesan Sekarang!</a>
       </div>
       <div class="card-footer fs-5"><strong class="price-here"><%= band.price %></strong></div>
     </div>
     <% }) %>
+    <div class="d-grid gap-2 d-sm-block mt-5 mb-3">
+      <a href="/home" class="btn btn-primary" role="button">Kembali ke Menu Utama</a>
+    </div>
   </div>
 </div>
 <script>

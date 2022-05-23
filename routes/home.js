@@ -7,6 +7,9 @@ const verify = require('./verifyToken');
 router.get('/', (req, res) => {
   res.render('landingPage', {
     layout: 'layouts/main-layout',
+    user: {
+      name: 'Welcome',
+    },
   });
 });
 
@@ -14,6 +17,9 @@ router.get('/', (req, res) => {
 router.get('/login', (req, res) => {
   res.render('login', {
     layout: 'layouts/main-layout',
+    user: {
+      name: 'Welcome',
+    },
   });
 });
 
@@ -21,13 +27,19 @@ router.get('/login', (req, res) => {
 router.get('/register', (req, res) => {
   res.render('register', {
     layout: 'layouts/main-layout',
+    user: {
+      name: 'Welcome',
+    },
   });
 });
 
-//REGISTER
+//REGISTER SUCCESSFUL
 router.get('/register/successful', (req, res) => {
   res.render('registerSuccessful', {
     layout: 'layouts/main-layout',
+    user: {
+      name: 'Welcome',
+    },
   });
 });
 
@@ -35,6 +47,7 @@ router.get('/register/successful', (req, res) => {
 router.get('/home', verify, (req, res) => {
   res.render('home', {
     layout: 'layouts/main-layout',
+    user: req.validUser,
   });
 });
 
@@ -46,6 +59,7 @@ router.get('/join', verify, async (req, res) => {
     res.render('join', {
       layout: 'layouts/main-layout',
       categories: category,
+      user: req.validUser,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -59,6 +73,7 @@ router.get('/band/lists', verify, async (req, res) => {
     res.render('bandList', {
       layout: 'layouts/main-layout',
       bands: bands,
+      user: req.validUser,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -73,6 +88,7 @@ router.get('/band/:id', verify, async (req, res) => {
     res.render('profile', {
       layout: 'layouts/main-layout',
       band: band,
+      user: req.validUser,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -83,6 +99,7 @@ router.get('/band/:id', verify, async (req, res) => {
 router.get('/join/successful', verify, (req, res) => {
   res.render('joinSuccessful', {
     layout: 'layouts/main-layout',
+    user: req.validUser,
   });
 });
 
