@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Category = require('../models/Category');
+const Band = require('../models/Band');
 
 //LANDING PAGE
 router.get('/', (req, res) => {
@@ -16,6 +17,19 @@ router.get('/join', async (req, res) => {
     res.render('join', {
       layout: 'layouts/main-layout',
       categories: category,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//ORDER A BAND
+router.get('/band/lists', async (req, res) => {
+  try {
+    const bands = await Band.find();
+    res.render('bandList', {
+      layout: 'layouts/main-layout',
+      bands: bands,
     });
   } catch (err) {
     res.status(500).json(err);

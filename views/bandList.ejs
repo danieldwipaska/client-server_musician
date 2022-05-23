@@ -1,0 +1,33 @@
+<div class="container my-5">
+  <div class="col-6 mx-auto">
+    <% bands.forEach( (band) => { %>
+    <div class="card text-center text-bg-dark mb-3">
+      <div class="card-header">Band</div>
+      <div class="card-body">
+        <h5 class="card-title"><%= band.name %></h5>
+        <p class="card-text text-muted"><%= band.categories %></p>
+        <p class="card-text"><%= band.city %></p>
+        <a href="#" class="btn btn-primary mb-2">Lihat Profil</a>
+        <a href="#" class="btn btn-danger">Pesan Sekarang!</a>
+      </div>
+      <div class="card-footer fs-5"><strong class="price-here"><%= band.price %></strong></div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+<script>
+  const head = document.querySelector('head');
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'stylesheet');
+  link.setAttribute('href', '../../public/css/bandList.css');
+  head.appendChild(link);
+</script>
+<script>
+  const prices = document.querySelectorAll('.price-here');
+  console.log(prices);
+  const formatter = new Intl.NumberFormat(['ban', 'id']);
+  prices.forEach((price) => {
+    console.log(price.innerHTML);
+    price.innerHTML = formatter.format(parseInt(price.innerHTML));
+  });
+</script>
