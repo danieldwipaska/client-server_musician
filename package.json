@@ -1,0 +1,19 @@
+{
+  "name": "project1-fix-mobile-app-musician",
+  "version": "1.0.0",
+  "description": "Bikin musician baru karena yang lama error",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Daniel Kamasi",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "mongoose": "^6.3.4",
+    "nodemon": "^2.0.16"
+  }
+}
