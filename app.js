@@ -13,6 +13,7 @@ const homeRoute = require('./routes/home');
 const bandRoute = require('./routes/apiBands');
 const categoryRoute = require('./routes/apiCategory');
 const authRoute = require('./routes/apiAuth');
+const orderRoute = require('./routes/apiOrder');
 
 //MIDDLEWARES
 app.use(expressLayouts);
@@ -41,6 +42,7 @@ app.use('/', homeRoute);
 app.use('/api/bands', bandRoute);
 app.use('/api/categories', categoryRoute);
 app.use('/api/auth', authRoute);
+app.use('/api/orders', orderRoute);
 
 //LISTEN
 const port = process.env.PORT || 3000;

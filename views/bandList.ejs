@@ -16,7 +16,7 @@
         <p class="card-text" style="color: rgb(201, 201, 201)"><i><%= band.categories %></i></p>
         <p class="card-text"><%= band.city %></p>
         <a href="/band/<%= band._id %>" class="btn btn-primary">Lihat Profil</a>
-        <a href="#" class="btn btn-danger">Pesan Sekarang!</a>
+        <a href="/band/<%= band._id %>/order" class="btn btn-danger">Pesan Sekarang!</a>
       </div>
       <div class="card-footer fs-5"><strong class="price-here"><%= band.price %></strong></div>
     </div>

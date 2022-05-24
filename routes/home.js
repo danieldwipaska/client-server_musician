@@ -106,4 +106,18 @@ router.get('/join/successful', verify, (req, res) => {
   });
 });
 
+//ORDER
+router.get('/band/:id/order', verify, async (req, res) => {
+  try {
+    const band = await Band.findById(req.params.id);
+    res.render('order', {
+      layout: 'layouts/main-layout',
+      user: req.validUser,
+      band: band,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

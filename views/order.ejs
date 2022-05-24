@@ -3,10 +3,23 @@
     <div class="col-sm-8 mx-auto">
       <h1 class="display-6">Submit Pesanan Kamu!</h1>
       <br />
-      <form id="form" action="/api/bands" method="post">
+      <div class="card text-center text-bg-dark mb-3">
+        <div class="card-header">Band</div>
+        <div class="card-body">
+          <h5 class="card-title"><%= band.name %></h5>
+          <p class="card-text" style="color: rgb(201, 201, 201)"><i><%= band.categories %></i></p>
+          <p class="card-text"><%= band.city %></p>
+        </div>
+        <div class="card-footer fs-5"><strong class="price-here"><%= band.price %></strong></div>
+      </div>
+      <form id="form" action="/api/orders" method="post">
         <div class="mb-3" style="display: none">
           <label for="username" class="form-label">Username *</label>
           <input type="text" class="form-control" name="username" id="username" value="<%= user.name %>" />
+        </div>
+        <div class="mb-3" style="display: none">
+          <label for="bandId" class="form-label">Band ID *</label>
+          <input type="text" class="form-control" name="bandId" id="bandId" value="<%= band._id %>" />
         </div>
         <div class="mb-3">
           <label for="name" class="form-label">Nama Lengkap Pemesan *</label>
@@ -28,10 +41,6 @@
           <label for="phone" class="form-label">Nomor Telepon (Whatsapp) Pemesan *</label>
           <input type="text" class="form-control" name="phone" id="phone" placeholder="contoh: 0812345678" required />
         </div>
-        <div class="mb-3">
-          <label for="price" class="form-label">Jumlah Tarif</label>
-          <input type="number" class="form-control" name="price" id="price" value="<%= user.name %>" disabled />
-        </div>
         <button type="submit" class="btn btn-danger">Submit</button>
       </form>
       <div class="d-grid gap-2 d-sm-block mt-2 mb-3">
@@ -47,4 +56,13 @@
   link.setAttribute('rel', 'stylesheet');
   link.setAttribute('href', '../../public/css/join.css');
   head.appendChild(link);
+  const link2 = document.createElement('link');
+  link2.setAttribute('rel', 'stylesheet');
+  link2.setAttribute('href', '../../public/css/bandList.css');
+  head.appendChild(link2);
+</script>
+<script>
+  const price = document.querySelector('.price-here');
+  const formatter = new Intl.NumberFormat(['ban', 'id']);
+  price.innerHTML = formatter.format(parseInt(price.innerHTML));
 </script>
