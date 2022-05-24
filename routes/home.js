@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Category = require('../models/Category');
 const Band = require('../models/Band');
+const Order = require('../models/Order');
 const verify = require('./verifyToken');
 
 //LANDING PAGE
@@ -117,6 +118,33 @@ router.get('/band/:id/order', verify, async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+//HISTORY
+router.get('/history', verify, async (req, res) => {
+  const status = req.query.status;
+  if (status) {
+    try {
+      const orders = await Order.find({ username: req.validUser.name, status: status });
+      let bands = [];
+      for (let i = 0; i < orders.length; i++) {
+        const band = await Band.findById(orders[i].bandId); // tidak bisa pakai forEach, ga tau kenapa
+        bands.push(band);
+      }
+      res.render('historyPage', {
+        layout: 'layouts/main-layout',
+        user: req.validUser,
+        bands: bands,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.render('history', {
+      layout: 'layouts/main-layout',
+      user: req.validUser,
+    });
   }
 });
 
