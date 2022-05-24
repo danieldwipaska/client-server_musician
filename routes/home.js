@@ -76,6 +76,7 @@ router.get('/band/lists', verify, async (req, res) => {
       bands: bands,
       user: req.validUser,
       cats: cats,
+      catNow: '',
     });
   } catch (err) {
     res.status(500).json(err);

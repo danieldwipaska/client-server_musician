@@ -30,6 +30,7 @@ router.get('/', verify, async (req, res) => {
       bands: bands,
       user: req.validUser,
       cats: cats,
+      catNow: cat.name,
     });
   } catch (err) {
     res.status(500).json(err);

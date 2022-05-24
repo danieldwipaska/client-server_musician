@@ -1,8 +1,8 @@
 <div class="container-sm my-1">
   <div class="col-sm-8 mx-auto">
-    <a class="btn btn-outline-light mb-3 mx-1 active" href="/band/lists" role="button">All</a>
+    <a class="btn btn-outline-light mb-3 mx-1 categ active" href="/band/lists" role="button">All</a>
     <% cats.forEach( (cat) => { %>
-    <a class="btn btn-outline-light mb-3 mx-1 active" href="/api/bands?cat_id=<%= cat._id %>" role="button"><%= cat.name %></a>
+    <a class="btn btn-outline-light mb-3 mx-1 categ" href="/api/bands?cat_id=<%= cat._id %>" role="button"><%= cat.name %></a>
     <% }) %>
   </div>
 </div>
@@ -21,7 +21,7 @@
       <div class="card-footer fs-5"><strong class="price-here"><%= band.price %></strong></div>
     </div>
     <% }) %>
-    <div class="d-grid gap-2 d-sm-block mt-5 mb-3">
+    <div class="d-grid gap-2 d-sm-block mt-2 mb-3">
       <a href="/home" class="btn btn-primary" role="button">Kembali ke Menu Utama</a>
     </div>
   </div>
@@ -35,10 +35,20 @@
 </script>
 <script>
   const prices = document.querySelectorAll('.price-here');
-  console.log(prices);
   const formatter = new Intl.NumberFormat(['ban', 'id']);
   prices.forEach((price) => {
-    console.log(price.innerHTML);
     price.innerHTML = formatter.format(parseInt(price.innerHTML));
   });
+</script>
+<script>
+  const catNow = '<%= catNow %>';
+  if (catNow != '') {
+    const categ = document.querySelectorAll('.categ');
+    categ.forEach((cat) => {
+      if (cat.innerHTML == catNow) {
+        categ[0].classList.remove('active');
+        cat.classList.add('active');
+      }
+    });
+  }
 </script>
