@@ -1,0 +1,50 @@
+<div class="container-sm">
+  <div class="row">
+    <div class="col-sm-8 mx-auto">
+      <h1 class="display-6">Submit Pesanan Kamu!</h1>
+      <br />
+      <form id="form" action="/api/bands" method="post">
+        <div class="mb-3" style="display: none">
+          <label for="username" class="form-label">Username *</label>
+          <input type="text" class="form-control" name="username" id="username" value="<%= user.name %>" />
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nama Lengkap Pemesan *</label>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Nama asli, bukan samaran" required />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Pemesan *</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="contoh: example@gmail.com" required />
+        </div>
+        <div class="mb-3">
+          <label for="website" class="form-label">Lokasi Event *</label>
+          <input type="text" class="form-control" name="website" id="website" placeholder="prov/kota/univ/instansi" required />
+        </div>
+        <div class="mb-3">
+          <label for="managerName" class="form-label">Waktu Event *</label>
+          <input type="text" class="form-control" name="managerName" id="managerName" placeholder="nama manager utama" required />
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Nomor Telepon (Whatsapp) Pemesan *</label>
+          <input type="text" class="form-control" name="phone" id="phone" placeholder="contoh: 0812345678" required />
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Jumlah Tarif</label>
+          <input type="number" class="form-control" name="price" id="price" value="<%= user.name %>" disabled />
+        </div>
+        <button type="submit" class="btn btn-danger">Submit</button>
+      </form>
+      <div class="d-grid gap-2 d-sm-block mt-2 mb-3">
+        <a href="/band/lists" class="btn btn-primary" role="button">Kembali ke Menu Utama</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const head = document.querySelector('head');
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'stylesheet');
+  link.setAttribute('href', '../../public/css/join.css');
+  head.appendChild(link);
+</script>

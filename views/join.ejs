@@ -5,8 +5,8 @@
       <br />
       <form id="form" action="/api/bands" method="post">
         <div class="mb-3" style="display: none">
-          <label for="userId" class="form-label">UserID *</label>
-          <input type="text" class="form-control" name="userId" id="userId" value="abcd1234" />
+          <label for="username" class="form-label">Username *</label>
+          <input type="text" class="form-control" name="username" id="username" value="<%= user.name %>" />
         </div>
         <div class="mb-3">
           <label for="name" class="form-label">Nama Band *</label>
