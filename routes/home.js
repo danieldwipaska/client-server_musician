@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     user: {
       name: 'Welcome',
     },
+    title: 'Join and Get your Guest Star',
   });
 });
 
@@ -22,6 +23,7 @@ router.get('/login', (req, res) => {
     user: {
       name: 'Welcome',
     },
+    title: 'Login',
   });
 });
 
@@ -32,6 +34,7 @@ router.get('/register', (req, res) => {
     user: {
       name: 'Welcome',
     },
+    title: 'Register',
   });
 });
 
@@ -42,6 +45,7 @@ router.get('/register/successful', (req, res) => {
     user: {
       name: 'Welcome',
     },
+    title: 'Register Successful',
   });
 });
 
@@ -50,6 +54,7 @@ router.get('/home', verify, (req, res) => {
   res.render('home', {
     layout: 'layouts/main-layout',
     user: req.validUser,
+    title: 'Home',
   });
 });
 
@@ -57,11 +62,11 @@ router.get('/home', verify, (req, res) => {
 router.get('/join', verify, async (req, res) => {
   try {
     const category = await Category.find();
-
     res.render('join', {
       layout: 'layouts/main-layout',
       categories: category,
       user: req.validUser,
+      title: 'Join your Band',
     });
   } catch (err) {
     res.status(500).json(err);
@@ -79,6 +84,7 @@ router.get('/band/lists', verify, async (req, res) => {
       user: req.validUser,
       cats: cats,
       catNow: '',
+      title: 'Band lists',
     });
   } catch (err) {
     res.status(500).json(err);
@@ -94,6 +100,7 @@ router.get('/band/:id', verify, async (req, res) => {
       layout: 'layouts/main-layout',
       band: band,
       user: req.validUser,
+      title: band.name,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -105,6 +112,7 @@ router.get('/join/successful', verify, (req, res) => {
   res.render('joinSuccessful', {
     layout: 'layouts/main-layout',
     user: req.validUser,
+    title: 'Join successful',
   });
 });
 
@@ -116,6 +124,7 @@ router.get('/band/:id/order', verify, async (req, res) => {
       layout: 'layouts/main-layout',
       user: req.validUser,
       band: band,
+      title: `Order ${band.name}`,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -137,6 +146,7 @@ router.get('/history', verify, async (req, res) => {
         layout: 'layouts/main-layout',
         user: req.validUser,
         bands: bands,
+        title: 'History',
       });
     } catch (err) {
       res.status(500).json(err);
@@ -145,6 +155,7 @@ router.get('/history', verify, async (req, res) => {
     res.render('history', {
       layout: 'layouts/main-layout',
       user: req.validUser,
+      title: 'History',
     });
   }
 });
@@ -157,6 +168,7 @@ router.get('/bandjoined', verify, async (req, res) => {
       layout: 'layouts/main-layout',
       bands: bands,
       user: req.validUser,
+      title: 'Your Bands',
     });
   } catch (err) {
     res.status(500).json(err);
@@ -171,6 +183,7 @@ router.get('/band/:id/edit', verify, async (req, res) => {
       layout: 'layouts/main-layout',
       user: req.validUser,
       band: band,
+      title: `Edit ${band.name}`,
     });
   } catch (err) {
     res.status(500).json(err);

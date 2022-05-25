@@ -69,6 +69,7 @@ router.get('/', verify, async (req, res) => {
       user: req.validUser,
       cats: cats,
       catNow: cat.name,
+      title: `Category: ${cat.name}`,
     });
   } catch (err) {
     res.status(500).json(err);
