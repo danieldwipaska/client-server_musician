@@ -8,6 +8,7 @@
         <p class="card-text" style="color: rgb(201, 201, 201)"><i><%= band.categories %></i></p>
         <p class="card-text"><%= band.city %></p>
         <a href="/band/<%= band._id %>" class="btn btn-primary">Lihat Profil</a>
+        <a href="/band/<%= band._id %>/edit" class="btn btn-danger">Edit</a>
       </div>
       <div class="card-footer fs-5"><strong class="price-here"><%= band.price %></strong></div>
     </div>

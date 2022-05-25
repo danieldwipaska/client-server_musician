@@ -14,6 +14,44 @@ router.post('/', verify, async (req, res) => {
   }
 });
 
+//UPDATE A POST
+// it should be a PUT
+router.post('/:id', verify, async (req, res) => {
+  try {
+    const updatedBand = await Band.findByIdAndUpdate(
+      req.params.id,
+      {
+        name: req.body.name,
+        email: req.body.email,
+        website: req.body.website,
+        managerName: req.body.managerName,
+        phone: req.body.phone,
+        memberName: req.body.memberName,
+        desc: req.body.desc,
+        categories: req.body.categories,
+        city: req.body.city,
+        tools: req.body.tools,
+        price: req.body.price,
+      },
+      { new: true }
+    );
+    res.redirect('/bandjoined');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//CREATE A BAND LIST
+router.post('/', verify, async (req, res) => {
+  const newBand = new Band(req.body);
+  try {
+    const savedBand = await newBand.save();
+    res.redirect('/join/successful');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //GET BANDS BY CATEGORIES
 router.get('/', verify, async (req, res) => {
   const catId = req.query.cat_id;

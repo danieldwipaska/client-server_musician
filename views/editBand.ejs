@@ -1,0 +1,70 @@
+<div class="container-sm">
+  <div class="row">
+    <div class="col-sm-8 mx-auto">
+      <h1 class="display-6">Edit Data Band <strong><%= band.name %></strong></h1>
+      <br />
+      <form id="form" action="/api/bands/<%= band._id %>" method="post">
+        <div class="mb-3" style="display: none">
+          <label for="username" class="form-label">Username *</label>
+          <input type="text" class="form-control" name="username" id="username" value="<%= user.name %>" />
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nama Band *</label>
+          <input type="text" class="form-control" name="name" id="name" value="<%= band.name %>" placeholder="Nama Band, dan singkatan jika ada" required />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email *</label>
+          <input type="email" class="form-control" name="email" id="email" value="<%= band.email %>" placeholder="contoh: example@gmail.com" required />
+        </div>
+        <div class="mb-3">
+          <label for="website" class="form-label">Website Band (jika ada)</label>
+          <input type="text" class="form-control" name="website" id="website" value="<%= band.website %>" placeholder="contoh: www.website.com" required />
+        </div>
+        <div class="mb-3">
+          <label for="managerName" class="form-label">Nama Manager *</label>
+          <input type="text" class="form-control" name="managerName" id="managerName" value="<%= band.managerName %>" placeholder="nama manager utama" required />
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Nomor Telepon (Whatsapp) Manager Band *</label>
+          <input type="text" class="form-control" name="phone" id="phone" value="<%= band.phone %>" placeholder="contoh: 0812345678" required />
+        </div>
+        <div class="mb-3">
+          <label for="memberName" class="form-label">Nama Anggota/Personil *</label>
+          <input type="text" class="form-control" name="memberName" id="memberName" value="<%= band.memberName %>" placeholder="pisahkan dengan tanda koma (,)" required />
+        </div>
+        <div class="mb-3">
+          <label for="desc" class="form-label">Deskripsi Band (jika ada)</label>
+          <input type="text" class="form-control" name="desc" id="desc" value="<%= band.desc %>" placeholder="maks. 500 karakter" />
+        </div>
+        <!-- <div class="mb-3 form-check">
+            <input class="form-check-input" type="checkbox" name="categories" value="" id="" />
+            <label class="form-check-label" for=""></label>
+          </div> -->
+        <div class="mb-3">
+          <label for="city" class="form-label">Asal Kota Band *</label>
+          <input type="text" class="form-control" name="city" id="city" value="<%= band.city %>" placeholder="kota asal" required />
+        </div>
+        <div class="mb-3">
+          <label for="tools" class="form-label">Permintaan Penyediaan Alat Musik (jika ingin)</label>
+          <input type="text" class="form-control" name="tools" id="tools" value="<%= band.tools %>" placeholder="pisahkan dengan tanda koma (,)" />
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Jumlah Tarif</label>
+          <input type="number" class="form-control" name="price" id="price" value="<%= band.price %>" placeholder="contoh: 500000" required />
+        </div>
+        <button type="submit" class="btn btn-danger">Submit</button>
+      </form>
+      <div class="d-grid gap-2 d-sm-block mt-2 mb-3">
+        <a href="/bandjoined" class="btn btn-primary" role="button">Kembali ke Menu Utama</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const head = document.querySelector('head');
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'stylesheet');
+  link.setAttribute('href', '../../public/css/join.css');
+  head.appendChild(link);
+</script>

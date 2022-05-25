@@ -163,4 +163,18 @@ router.get('/bandjoined', verify, async (req, res) => {
   }
 });
 
+//EDIT A BAND
+router.get('/band/:id/edit', verify, async (req, res) => {
+  try {
+    const band = await Band.findById(req.params.id);
+    res.render('editBand', {
+      layout: 'layouts/main-layout',
+      user: req.validUser,
+      band: band,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
