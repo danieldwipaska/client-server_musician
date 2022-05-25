@@ -3,6 +3,7 @@ const Category = require('../models/Category');
 const Band = require('../models/Band');
 const Order = require('../models/Order');
 const verify = require('./verifyToken');
+const User = require('../models/User');
 
 //LANDING PAGE
 router.get('/', (req, res) => {
@@ -145,6 +146,20 @@ router.get('/history', verify, async (req, res) => {
       layout: 'layouts/main-layout',
       user: req.validUser,
     });
+  }
+});
+
+//JOINED BAND
+router.get('/bandjoined', verify, async (req, res) => {
+  try {
+    const bands = await Band.find({ username: req.validUser.name });
+    res.render('joinedBand', {
+      layout: 'layouts/main-layout',
+      bands: bands,
+      user: req.validUser,
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
